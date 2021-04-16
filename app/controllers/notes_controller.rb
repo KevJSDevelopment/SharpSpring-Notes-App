@@ -1,21 +1,28 @@
 class NotesController < ApplicationController
 
     def new
-        # byebug
+        @note = Note.new
         render :new_note
     end
 
     def index
-        @users = User.all
+        @users = Note.where(user_id: session[:user_id])
     end
 
-    # def create
+    def create
+        @note = Note.new(title: params[:note][:title], user_id: User.last.id, description: params[:note][:description])
+        # byebug
+        if @note.save
+            redirect_to note_path(@note.id)
+        else
+            render :new_note
+        end
+    end
 
-    # end
-
-    # def show
-
-    # end
+    def show
+        @note = Note.find(params[:id])
+        render :show_note
+    end
 
     # def edit
 
