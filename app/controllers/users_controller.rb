@@ -1,15 +1,15 @@
 class UsersController < ApplicationController
 
-    def create
+    # def create
 
-    end
+    # end
 
-    def login
+    # def login
 
-    end
+    # end
 
-    def logout
+    # def logout
 
-    end
-    
+    # end
+
 end

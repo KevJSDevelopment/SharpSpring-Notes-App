@@ -1,27 +1,32 @@
 class NotesController < ApplicationController
 
     def new
-        render :login_form
+        # byebug
+        render :new_note
     end
 
-    def create
-
+    def index
+        @users = User.all
     end
 
-    def show
+    # def create
 
-    end
+    # end
 
-    def edit
+    # def show
 
-    end
+    # end
 
-    def update
+    # def edit
 
-    end
+    # end
 
-    def destroy
+    # def update
 
-    end
+    # end
+
+    # def destroy
+
+    # end
 
 end
