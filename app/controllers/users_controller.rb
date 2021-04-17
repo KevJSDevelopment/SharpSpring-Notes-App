@@ -1,15 +1,36 @@
 class UsersController < ApplicationController
 
-    # def create
+    def show
+        @notes = Note.where(user_id: User.last.id)
+    end
 
-    # end
+    def create
+        @user = User.new(username: params[:username], password: params[:password])
+        # byebug
+        if @user.save
+            session[:user_id] = @user.id
+            redirect_to user_path(@user)
+        else 
+            
+            render :new
+        end
+    end
 
-    # def login
+    def process_login
+        @user = User.find_by(username: User.last.username)
+        # byebug
+        if @user && @user.authenticate(@user.password)
+            session[:user_id] = @user.id
+            redirect_to user_path(@user.id)
+        else
+            render :login
+        end
+    end
 
-    # end
-
-    # def logout
-
-    # end
+    def logout
+        session.clear
+        flash[:message] = "You have been logged out"
+        redirect_to login_path
+    end 
 
 end
