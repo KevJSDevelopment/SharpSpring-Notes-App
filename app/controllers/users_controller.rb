@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
     def show
-        @notes = Note.where(user_id: User.last.id)
+        @notes = Note.where(user_id: session[:user_id])
     end
 
     def create
@@ -11,9 +11,13 @@ class UsersController < ApplicationController
             session[:user_id] = @user.id
             redirect_to user_path(@user)
         else 
-            
-            render :new
+            flash.now[:message] = @user.errors.full_messages
+            render :login
         end
+    end
+
+    def login
+        render :login
     end
 
     def process_login
@@ -23,6 +27,7 @@ class UsersController < ApplicationController
             session[:user_id] = @user.id
             redirect_to user_path(@user.id)
         else
+            flash.now[:message] = ["Username or password not found"]
             render :login
         end
     end
