@@ -17,13 +17,18 @@
  @import 'bootstrap';
 
  body{
-   background-color: rgb(230, 230, 230);
+   background-color: rgb(225, 253, 198);
  }
 
  .title {
    text-align: center;
-   font-size: small;
+   font-size: large;
  }
+
+ .header {
+  text-align: center;
+  font-size: small;
+}
 
  .login-item {
   border: 1px;
@@ -31,5 +36,10 @@
   border-style: solid;
   border-radius: 1%;
   margin: 2%;
-  padding: 1%
+  padding: 1%;
+  background-color: white;
+ }
+
+ .alert {
+   text-align: center;
  }

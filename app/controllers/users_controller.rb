@@ -21,9 +21,9 @@ class UsersController < ApplicationController
     end
 
     def process_login
-        @user = User.find_by(username: User.last.username)
+        @user = User.find_by(username: params[:username])
         # byebug
-        if @user && @user.authenticate(@user.password)
+        if @user && @user.authenticate(params[:password])
             session[:user_id] = @user.id
             redirect_to user_path(@user.id)
         else
@@ -34,7 +34,7 @@ class UsersController < ApplicationController
 
     def logout
         session.clear
-        flash[:message] = "You have been logged out"
+        flash[:message] = ["You have been logged out"]
         redirect_to login_path
     end 
 
