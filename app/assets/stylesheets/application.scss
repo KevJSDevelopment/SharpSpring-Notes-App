@@ -19,3 +19,17 @@
  body{
    background-color: rgb(230, 230, 230);
  }
+
+ .title {
+   text-align: center;
+   font-size: small;
+ }
+
+ .login-item {
+  border: 1px;
+  border-color: "gray";
+  border-style: solid;
+  border-radius: 1%;
+  margin: 2%;
+  padding: 1%
+ }
