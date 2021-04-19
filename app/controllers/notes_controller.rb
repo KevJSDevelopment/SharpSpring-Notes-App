@@ -5,7 +5,11 @@ class NotesController < ApplicationController
     end
 
     def create
-        @note = Note.new(title: params[:note][:title], user_id: session[:user_id], description: params[:note][:description])
+        if params[:note][:title].length > 0
+            @note = Note.new(title: params[:note][:title], user_id: session[:user_id], description: params[:note][:description])
+        else
+            @note = Note.new(title: params[:note][:description][0...29], user_id: session[:user_id], description: params[:note][:description])
+        end
         # byebug
         if @note.save
             redirect_to profile_path
