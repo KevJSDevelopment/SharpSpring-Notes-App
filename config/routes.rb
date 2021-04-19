@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :notes, only: [:new, :create, :update, :show]
+  resources :notes, only: [:new, :create, :update]
   resources :users, only: [:update, :create]
 
   get "/login", to: "users#login"

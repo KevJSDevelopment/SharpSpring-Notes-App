@@ -6,11 +6,20 @@
     <%end%>
 <%end%>
 
-<%= form_for @note do |f| %>
-    <%= f.label :title, "Title" %>
-    <%= f.text_field :title , class: 'form-control'%>
-    <br>
-    <%= f.label :description, "Description:" %>
-    <%= f.text_area :description , class: 'form-control'%>
-    <%= f.submit %>
-<% end %>
+<div class="card">
+    <div class="card-header header">
+        <% if @note.title %>
+            Update <%= @note.title %>
+        <% else %>
+            New note
+        <% end %>
+    </div>
+    <%= form_for @note do |f| %>
+        <%= f.label :title, "Title" %>
+        <%= f.text_field :title , class: 'form-control'%>
+        <br>
+        <%= f.label :description, "Description:" %>
+        <%= f.text_area :description , class: 'form-control'%>
+        <%= f.submit %>
+    <% end %>
+</div>
