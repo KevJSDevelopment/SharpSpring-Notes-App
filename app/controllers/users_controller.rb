@@ -2,6 +2,8 @@ class UsersController < ApplicationController
 
     def show
         @notes = Note.where(user_id: session[:user_id])
+        @user = User.find(session[:user_id])
+        # byebug
     end
 
     def create

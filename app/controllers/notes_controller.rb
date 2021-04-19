@@ -5,10 +5,10 @@ class NotesController < ApplicationController
     end
 
     def create
-        @note = Note.new(title: params[:note][:title], user_id: User.last.id, description: params[:note][:description])
+        @note = Note.new(title: params[:note][:title], user_id: session[:user_id], description: params[:note][:description])
         # byebug
         if @note.save
-            redirect_to note_path(@note.id)
+            redirect_to profile_path
         else
             render :new
         end

@@ -17,8 +17,8 @@
         </div>
         <%= form_tag(login_path, method: :post) do %>
             <div class="form-group">
-                <%= label_tag :name, "Username" %>
-                <%= text_field_tag :name, nil, class: 'form-control', id: 'exampleInputEmail1', placeholder: 'Username'%>
+                <%= label_tag :username, "Username" %>
+                <%= text_field_tag :username, nil, class: 'form-control', id: 'exampleInputEmail1', placeholder: 'Username'%>
                 <small id="emailHelp" class="form-text text-muted">Your username is case sensitive</small>
             </div>
             <div class="form-group">

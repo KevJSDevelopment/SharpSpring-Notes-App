@@ -43,3 +43,24 @@
  .alert {
    text-align: center;
  }
+
+ .full {
+    min-height: 95vh;
+ }
+
+ .container {
+   margin-left: 0;
+ }
+
+ .row {
+   margin-top: 2%;
+ }
+
+ .col-4 {
+    border: 0;
+    border-right: 1px;
+    border-color: "gray";
+    border-style: solid;
+    border-radius: 1%;
+    height: 100%;
+ }

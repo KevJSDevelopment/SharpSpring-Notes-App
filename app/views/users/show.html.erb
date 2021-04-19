@@ -1,8 +1,64 @@
-<% if @notes %>
-    <% @notes.each do |note| %>
-    <div> <%= note.title %> </div>
-    <% end %>
-<% end %>
+<div class="container full">
+    <div class="row full">
+        <div class="col-4 full">
+            <div class="row title">
+                Profile
+            </div>
+            <div class="row">
+                name: <%= @user.username %>
+            </div>
+            <div class="row">
+                number of notes: <%= @notes.length %>
+            </div>
+        </div>
+        <div class="col-8 full">
+            <% i = 0 %>
+            <% j = 1 %>
+            <% while i < @notes.length %>
+                <div class="row">
+                    <div class="col">
+                        <div class="header"> 
+                            <%= @notes[i].title %>
+                        </div>
+                        <div>
+                            <%= @notes[i].description %>
+                        </div>
+                        <div class="footer"> 
+
+                        </div>
+                    </div>
+                    <% if @notes[j] %>
+                        <div class="col">
+                            <div class="header"> 
+                                <%= @notes[j].title %>
+                            </div>
+                            <div>
+                                <%= @notes[j].description %>
+                            </div>
+                            <div class="footer"> 
+                                
+                            </div>
+                        </div>
+                    <% else %>
+                        <div class="col">
+                            <%= button_to 'add note', new_note_path,  method: :get %> 
+                        </div>
+                    <% end %>
+                </div>
+                <% i += 2 %>
+                <% j += 2 %>
+            <% end %>
+
+            <% if @notes.length % 2 == 0 || @notes.length == 0 %>
+                <div class="row">
+                    <div class="col">
+                        <%= button_to 'add note', new_note_path,  method: :get  %> 
+                    </div>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div>
 
 <%= button_to 'logout', logout_path %> 
 

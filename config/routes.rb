@@ -1,16 +1,17 @@
 Rails.application.routes.draw do
   resources :notes, only: [:new, :create, :edit, :update, :destroy, :show]
-  resources :users, only: [:update, :create, :show]
+  resources :users, only: [:update, :create]
 
   get "/login", to: "users#login"
   post "/login", to: "users#process_login"
   post "/create", to: "users#create"
-
+  get "/profile", to: "users#show", as: "profile"
   post "/logout", to: "users#logout", as: "logout"
-  # if session[:user_id]
-  get '*path' => redirect('/login')
-  # else
-  #   get '*path' => redirect("/user/#{session[:user_id]")
-  # end
+
+  get "*path", to: redirect("/profile"), constraints: lambda { |request|
+    request.session[:user_id]
+  }
+  get "*path", to: redirect('/login')
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
