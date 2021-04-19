@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :notes, only: [:new, :create, :edit, :update, :destroy, :show]
+  resources :notes, only: [:new, :create, :update, :show]
   resources :users, only: [:update, :create]
 
   get "/login", to: "users#login"
@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   post "/create", to: "users#create"
   get "/profile", to: "users#show", as: "profile"
   post "/logout", to: "users#logout", as: "logout"
+  post "/edit", to: "notes#edit", as: "edit_note"
+  delete "/", to: "notes#destroy", as: "destroy_note"
 
   get "*path", to: redirect("/profile"), constraints: lambda { |request|
     request.session[:user_id]

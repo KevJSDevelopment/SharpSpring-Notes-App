@@ -23,11 +23,20 @@ class NotesController < ApplicationController
     end
 
     def update
-
+        @note = Note.find(params[:id])
+        # byebug
+        if @note.update(title: params[:note][:title], description: params[:note][:description])
+            redirect_to profile_path
+        else 
+            render :edit
+        end
     end
 
     def destroy
+        @note = Note.find(params[:id])
+        @note.destroy
 
+        redirect_to profile_path
     end
 
 end

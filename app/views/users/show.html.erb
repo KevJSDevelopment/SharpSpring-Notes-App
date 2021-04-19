@@ -1,64 +1,110 @@
 <div class="container full">
-    <div class="row full">
-        <div class="col-4 full">
-            <div class="row title">
-                Profile
+    <div class="row">
+        <div class="col-3 full">
+            <div class="row">
+                <div class="col title">
+                    Profile
+                </div>
             </div>
             <div class="row">
-                name: <%= @user.username %>
+                <div class="col">
+                    Name: 
+                </div>
+                <div class="col">
+                    <%= @user.username %>
+                </div>
             </div>
             <div class="row">
-                number of notes: <%= @notes.length %>
+                <div class="col">
+                    Total notes: 
+                </div>
+                <div class="col">
+                    <%= @notes.length %>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <%= button_to 'logout', logout_path, {class: "btn-sm btn-outline-secondary"} %> 
+                </div>
             </div>
         </div>
-        <div class="col-8 full">
+        <div class="col-9 notes">
+            <div class="title"> My Notes </div>
+            <div class="col">
+                <%= button_to 'New Note +', new_note_path, {class: "btn-sm btn-outline-success",  method: :get} %> 
+            </div>
             <% i = 0 %>
             <% j = 1 %>
+            <% k = 2 %>
             <% while i < @notes.length %>
                 <div class="row">
-                    <div class="col">
-                        <div class="header"> 
+                    <div class="col card">
+                        <div class="card-header">
                             <%= @notes[i].title %>
                         </div>
-                        <div>
-                            <%= @notes[i].description %>
-                        </div>
-                        <div class="footer"> 
-
+                        <div class="card-body">
+                            <p class="card-text">
+                                <% if @notes[i].description.length > 50 %>
+                                    <%= @notes[i].description[0..50] %> ...
+                                <% else %>
+                                    <%= @notes[i].description%>
+                                <% end %>
+                            </p>
+                            <%= button_to 'delete', destroy_note_path, params: {id: @notes[i].id}, class: "left btn btn-outline-danger", method: :delete %>
+                            <%= button_to 'edit', edit_note_path, params: {id: @notes[i].id}, class:"right btn btn-outline-info", method: :post %>
                         </div>
                     </div>
                     <% if @notes[j] %>
-                        <div class="col">
-                            <div class="header"> 
+                        <div class="col card">
+                            <div class="card-header">
                                 <%= @notes[j].title %>
                             </div>
-                            <div>
-                                <%= @notes[j].description %>
-                            </div>
-                            <div class="footer"> 
-                                
+                            <div class="card-body">
+                                <p class="card-text">
+                                    <% if @notes[j].description.length > 50 %>
+                                        <%= @notes[j].description[0..50] %> ...
+                                    <% else %>
+                                        <%= @notes[j].description%>
+                                    <% end %>
+                                </p>
+                                <%= button_to 'delete', destroy_note_path, params: {id: @notes[j].id}, class: "left btn btn-outline-danger", method: :delete %>
+                                <%= button_to 'edit', edit_note_path, params: {id: @notes[j].id}, class:"right btn btn-outline-info", method: :post %>
                             </div>
                         </div>
+                        <% if @notes[k] %>
+                            <div class="col card">
+                                <div class="card-header">
+                                    <%= @notes[k].title %>
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text">
+                                        <% if @notes[k].description.length > 50 %>
+                                            <%= @notes[k].description[0..50] %> ...
+                                        <% else %>
+                                            <%= @notes[k].description%>
+                                        <% end %>
+                                    </p>
+                                    <%= button_to 'delete', destroy_note_path, params: {id: @notes[k].id}, class: "left btn btn-outline-danger", method: :delete  %>
+                                    <%= button_to 'edit', edit_note_path, params: {id: @notes[k].id}, class: "right btn btn-outline-info", method: :post %>
+                                </div>
+                            </div>
+                        <% else %>
+                            <div class="col">
+                            </div>
+                        <% end %>
+
                     <% else %>
                         <div class="col">
-                            <%= button_to 'add note', new_note_path,  method: :get %> 
+                        </div>
+                        <div class="col">
                         </div>
                     <% end %>
                 </div>
-                <% i += 2 %>
-                <% j += 2 %>
-            <% end %>
-
-            <% if @notes.length % 2 == 0 || @notes.length == 0 %>
-                <div class="row">
-                    <div class="col">
-                        <%= button_to 'add note', new_note_path,  method: :get  %> 
-                    </div>
-                </div>
+                <% i += 3 %>
+                <% j += 3 %>
+                <% k += 3 %>
             <% end %>
         </div>
     </div>
 </div>
-
-<%= button_to 'logout', logout_path %> 
 

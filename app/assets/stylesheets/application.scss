@@ -17,7 +17,7 @@
  @import 'bootstrap';
 
  body{
-   background-color: rgb(225, 253, 198);
+   background-color: whitesmoke;
  }
 
  .title {
@@ -56,11 +56,31 @@
    margin-top: 2%;
  }
 
- .col-4 {
+ .col-3 {
     border: 0;
     border-right: 1px;
     border-color: "gray";
     border-style: solid;
     border-radius: 1%;
     height: 100%;
+ }
+
+ .card {
+    margin: 2%;
+    padding: 0;
+ }
+
+ .col-9 {
+   width: 100%;
+   justify-content: space-evenly;
+   max-height: 90vh;
+   overflow: auto;
+ }
+
+ .left {
+   float: left;
+ }
+
+ .right {
+   float: right;
  }

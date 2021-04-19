@@ -1,3 +1,11 @@
+<% if @note.errors %>
+    <% @note.errors.full_messages.each do|message|%>
+        <div class="alert alert-info"> 
+            <%= message %>
+        </div>
+    <%end%>
+<%end%>
+
 <%= form_for @note do |f| %>
     <%= f.label :title, "Title" %>
     <%= f.text_field :title , class: 'form-control'%>
