@@ -14,12 +14,15 @@
             New note
         <% end %>
     </div>
-    <%= form_for @note do |f| %>
-        <%= f.label :title, "Title" %>
-        <%= f.text_field :title , class: 'form-control'%>
-        <br>
-        <%= f.label :description, "Description:" %>
-        <%= f.text_area :description , class: 'form-control'%>
-        <%= f.submit %>
-    <% end %>
+    <div class="card-body">
+        <%= form_for @note do |f| %>
+            <%= f.label :title, "Title" %>
+            <%= f.text_field :title , class: 'form-control'%>
+            <br>
+            <%= f.label :description, "Description:" %>
+            <%= f.text_area :description , class: 'form-control'%>
+            <br>
+            <%= f.submit %>
+        <% end %>
+    </div>
 </div>
