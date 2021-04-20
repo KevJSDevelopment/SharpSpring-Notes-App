@@ -74,6 +74,18 @@
     padding: 0;
  }
 
+ .card-header {
+   font-size: x-small;
+ }
+ 
+ .card-title {
+   font-size: large;
+ }
+
+ .card-text {
+   font-size: small;
+ }
+
  .col-9 {
    width: 100%;
    justify-content: space-evenly;

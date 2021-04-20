@@ -40,9 +40,12 @@
                 <div class="row">
                     <div class="col card">
                         <div class="card-header">
-                            <%= @notes[i].title %>
+                            Last updated: <%= @notes[i].updated_at.to_time.strftime('%B %e at %l:%M %p') %>
                         </div>
                         <div class="card-body">
+                            <div class="card-title">
+                                <%= @notes[i].title %>
+                            </div>
                             <p class="card-text">
                                 <% if @notes[i].description.length > 50 %>
                                     <%= @notes[i].description[0..50] %> ...
@@ -51,15 +54,18 @@
                                 <% end %>
                             </p>
                             <%= button_to 'delete', destroy_note_path, params: {id: @notes[i].id}, class: "left btn btn-outline-danger", method: :delete %>
-                            <%= button_to 'edit', edit_note_path, params: {id: @notes[i].id}, class:"right btn btn-outline-info", method: :post %>
+                            <%= button_to 'view/edit', edit_note_path, params: {id: @notes[i].id}, class:"right btn btn-outline-info", method: :post %>
                         </div>
                     </div>
                     <% if @notes[j] %>
                         <div class="col card">
                             <div class="card-header">
-                                <%= @notes[j].title %>
+                                Last updated: <%= @notes[j].updated_at.to_time.strftime('%B %e at %l:%M %p') %>
                             </div>
                             <div class="card-body">
+                                <div class="card-title">
+                                    <%= @notes[j].title %>
+                                </div>
                                 <p class="card-text">
                                     <% if @notes[j].description.length > 50 %>
                                         <%= @notes[j].description[0..50] %> ...
@@ -68,15 +74,18 @@
                                     <% end %>
                                 </p>
                                 <%= button_to 'delete', destroy_note_path, params: {id: @notes[j].id}, class: "left btn btn-outline-danger", method: :delete %>
-                                <%= button_to 'edit', edit_note_path, params: {id: @notes[j].id}, class:"right btn btn-outline-info", method: :post %>
+                                <%= button_to 'view/edit', edit_note_path, params: {id: @notes[j].id}, class:"right btn btn-outline-info", method: :post %>
                             </div>
                         </div>
                         <% if @notes[k] %>
                             <div class="col card">
                                 <div class="card-header">
-                                    <%= @notes[k].title %>
+                                    Last updated: <%= @notes[k].updated_at.to_time.strftime('%B %e at %l:%M %p') %>
                                 </div>
                                 <div class="card-body">
+                                    <div class="card-title">
+                                        <%= @notes[k].title %>
+                                    </div>
                                     <p class="card-text">
                                         <% if @notes[k].description.length > 50 %>
                                             <%= @notes[k].description[0..50] %> ...
@@ -85,7 +94,7 @@
                                         <% end %>
                                     </p>
                                     <%= button_to 'delete', destroy_note_path, params: {id: @notes[k].id}, class: "left btn btn-outline-danger", method: :delete  %>
-                                    <%= button_to 'edit', edit_note_path, params: {id: @notes[k].id}, class: "right btn btn-outline-info", method: :post %>
+                                    <%= button_to 'view/edit', edit_note_path, params: {id: @notes[k].id}, class: "right btn btn-outline-info", method: :post %>
                                 </div>
                             </div>
                         <% else %>
