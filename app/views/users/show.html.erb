@@ -24,13 +24,13 @@
             </div>
             <div class="row">
                 <div class="col">
-                    <%= button_to 'logout', logout_path, {class: "btn-sm btn-outline-secondary"} %> 
+                    <%= button_to 'logout', logout_path, {class: "btn-sm btn-outline-secondary logout"} %> 
                 </div>
             </div>
         </div>
         <div class="col-9 notes">
             <div class="title"> My Notes </div>
-            <div class="col">
+            <div>
                 <%= button_to 'New Note +', new_note_path, {class: "btn-sm btn-outline-success",  method: :get} %> 
             </div>
             <% i = 0 %>
